@@ -109,6 +109,7 @@ opacity:0.8;
     transition:transform 0.2s ease,color 0.2s ease;
     font-family:monospace;
     letter-spacing: 1px;
+    font-size:1.3rem;
 }
 .delete-btn:hover{
     color:var(--green);
