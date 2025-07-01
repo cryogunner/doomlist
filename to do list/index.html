@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">                                                              
+        <title>Slowly Failing- To Do List of Doom</title>
+        <link rel="stylesheet" href="style.css"><!--link to css-->
+    </head>
+    <body>
+        <header>
+            <h1>To do list of things i never do...</h1>
+            <h1 class="glitch" data-text="shrine to my own avoidance"></h1>
+        </header>
+        <main>
+            <!--input section-->
+            <section id="input-area">
+            <input type="text" id="textInput" placeholder="...try again">
+            <button id="txtInputBtn">Add to the burden</button>
+        </section>
+        <!--task list section-->
+        <section id="task-suggestions">
+            <h2>Existing Tasks</h2>
+            <ul id="taskList"></ul>
+        </section>
+        <!--optional motivational chaos-->
+        <section id="bonus-tasks">
+            <h2>Dreadful Aspirations</h2>
+            <ul id="bonusList">
+                <li>Apply for jobs I'm terrified of</li>
+                <li>Scream into the void (professionally)</li>
+                <li>Make peace with ambition...or burn it</li>
+                <li>Mental stability</li>
+                <li>Touch grass (maybe)</li>
+            </ul>
+        </section>
+        <section id="emotional-panel">
+            <h3>Emotional Weather</h3>
+            <p id="emotion-text">...</p>
+        </section>
+        <section id="progress-area">
+            <h2>Emotional Progress</h2>
+            <div id="progress-container"> <!--empty container-->
+                <div id="progress-bar"></div><!--grows as tasks are completed-->
+            </div>
+            <p id="progress-text">No progress yet. Just existential dread.</p>
+        </section>
+        </main>
+        <script src="script.js"></script><!--link to javascript-->
+    </body>
+    <footer>
+        <p> @ ZAIN"S CHAOS. Made with <span style="color:#800000">melancholy</span> and <span style="color:#444">JavaScript.</span></p>
+       <!-- <p class="whisper">Everything I write is a to-do list of things for the person I wish I was.</p>-->
+        <p><em>Everything I write is a to-do list of things for the person I wish I was.</em></p>
+    </footer>
+</html>

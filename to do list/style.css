@@ -1,0 +1,252 @@
+/*reusable template-scalable css theme*/
+:root{
+    --bg:#0b0f0c;/*page background*/
+    --green:#6aff6a;
+    --red: #d00000;
+    --white: #eee;
+    --grey: #444;
+}
+body{
+    background-color:var(--bg) ;
+    color:var(--white); 
+    font-family:"Courier New", monospace;
+    margin:0;/*space around element-outer space*/
+    padding:0 1rem;/*space within elementroot-em --1rem=16px*/
+}
+header h1{
+    text-align:center;
+    font-size:1rem;
+    margin-top:2rem;
+    font-weight:300;/*font weight is boldness of font-bold,light,normal*/
+    text-shadow:0 0 10px #fff2;
+}
+/*input section*/
+#input-area{
+    text-align:center;
+    margin-top:2rem;
+}
+#textInput{
+    padding:0.5rem;
+    width:60%;
+    max-width:400px;
+    background-color:#222;
+    border:1px solid var(--grey);
+    color:var(--white);
+    font-size: 1rem;
+}
+#txtInputBtn{
+    padding:0.5rem 1rem;
+    margin-left:0.5rem;
+    background-color:#333;
+    color:var(--white);
+    border:1px solid #555;
+    cursor:pointer;
+    transition:background-color 0.3s;/*slow animation or smooth change*/
+}
+#txtInputBtn:hover{
+    background-color:#555;
+}
+/*task list section*/
+ul,ol{
+    margin-top:2rem;
+    padding-left:2rem;
+    line-height:1.8;/*space between lines*/
+}
+li{
+    position:relative;
+    padding-left:1rem;
+    color:#ccc;
+}
+#taskList li::before {
+  content: "o";
+  color: var(--green);/*--green used from root*/
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+  opacity:0.8;
+}
+#bonus-tasks li::before{
+content:"x";
+color:var(--red);
+font-weight:bold;
+position:absolute;
+left:0;
+opacity:0.8;
+}/*
+#bonusList li:hover{
+    background-color:#1a1a1a ;
+    filter:brightness(90%);
+    cursor:crosshair;
+    transform: scale(1.01) rotate(0.3deg);
+    transition:all 0.2s ease;
+}*/
+#bonusList li:hover {
+  color: var(--green);
+  text-shadow: 0 0 2px var(--red);
+  filter:brightness(90%);
+  transform:scale(1.01) rotate(0.3deg);
+  transition: all 0.2s ease;
+  background-color:#1a1a1a;
+  cursor:crosshair;
+}
+/*applied only to <li> that don't have completed class*/
+#bonusList li:not(.completed):hover::after{
+    content:"Really?";
+    position:absolute;
+    left: 400px;
+    margin-left:1rem;
+    white-space:nowrap;
+    color:var(--white);
+    font-size:0.8rem;
+    opacity:0.8;
+}
+/*delete button style*/
+.delete-btn{
+    color:var(--red);
+    cursor:pointer;
+    font-weight:bold;
+    margin-left:1rem;
+    transition:transform 0.2s ease,color 0.2s ease;
+    font-family:monospace;
+    letter-spacing: 1px;
+}
+.delete-btn:hover{
+    color:var(--green);
+    transform:scale(1.2) rotate(6deg);
+    text-shadow:0 0 6px var(--green);
+}
+/*deletion animation*/
+@keyframes fadeOut{
+    0%{
+        opacity:1;
+        filter:blur(0);
+    }
+    100%{
+        opacity:0;
+        filter:blur(2px);
+    }
+}
+/*bonus tasks section*/
+#bonus-tasks{
+    background-color:#1a1a1a;
+    padding:1rem;
+    margin-top:3rem;
+    border-left:4px solid #800000;
+    box-shadow:0 0 10px #222;
+}
+#bonus-tasks h2{
+    color:#cc4444;
+    font-family:"Courier New",monospace;
+    text-shadow:0 0 5px #000;
+}
+#bonus-tasks li{
+    margin-bottom:0.5rem;
+    color:#bbb;
+    font-style:italic;
+}
+/*gitch header effect*/
+.glitch{
+    color:var(--green);
+    position:relative;
+}
+/*overlay second copy of text*/
+.glitch::after{
+    content:attr(data-text);/*takes text from attribute*/
+    position:absolute;
+    left:2px;
+    text-shadow:-2px 0 red;
+    color:black;
+    clip:rect(0,900px,0,0);/*hides part of second copy for flickering effect*/
+    animation: glitchAnim 1.5s infinite linear alternate-reverse;
+}
+/*@keyframes controls how glicth moves over time*/
+@keyframes glitchAnim {
+  0% { clip: rect(0, 9999px, 0, 0); }
+  10% { clip: rect(10px, 9999px, 20px, 0); }
+  20% { clip: rect(5px, 9999px, 15px, 0); }
+  100% { clip: rect(0, 9999px, 0, 0); }
+}
+#emotional-panel{
+    position:fixed;
+    left:1rem;
+    right:1rem;
+    background-color:#111;
+    border:1px solid var(--grey);
+    padding:1rem;
+    max-width:200px;
+    font-size:0.9rem;
+    color:var(--green);
+    border-radius:5px;
+    box-shadow:0 0 10px #000;
+    font-style:italic;
+    z-index:10;
+}
+#emotional-panel h3{
+    margin:0 0 0.5rem;
+    color:var(--red);
+    font-size:0.95rem;
+    font-weight:bold;
+    text-shadow:0 0 5px #800;
+}
+#progress-area{
+    margin-top:3rem;
+    padding:1rem;
+    background-color:#0f0f0f;
+    border-left:4x solid var(--green);
+    box-shadow: 0 0 10px #222;
+    text-align:center;
+}
+#progress-container{
+    width:100%;
+    height:20px;
+    background-color:#222;
+    margin-top:1rem;
+    position:relative;
+    border:1px solid var(--grey);
+}
+#progress-bar{
+    height:100%;
+    background:linear-gradient(to right, var(--green), var(--red));
+    width:0%;
+    transition:width 0.6s ease;
+}
+#progress-text{
+    margin-top:0.5rem;
+    color:#aaa;
+    font-style:italic;
+    font-size:0.9rem;
+}
+/*footer section*/
+footer{
+    text-align:center;
+    margin-top:4rem;
+    padding:2rem 1rem;
+    color:#777;
+    font-size:0.9rem;
+    border-top:1px solid #333;
+    font-style:italic;
+    background-color: var(--bg);
+}
+footer em{
+    color:#999;
+}
+/*
+.whisper{
+    color:#555;
+    font-size:0.8rem;
+    font-style:italic;
+    opacity:0.6rem;
+    text-align:center;
+    margin-top:1rem;
+}
+    */
+.task-text{
+    cursor:pointer;
+    display:inline-block;
+}
+.completed{
+    text-decoration: line-through;
+    color:#777;
+    opacity:0.6;
+    transition:all 0.3s ease;
+ }
