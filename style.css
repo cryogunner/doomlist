@@ -93,7 +93,7 @@ opacity:0.8;
 #bonusList li:not(.completed):hover::after{
     content:"Really?";
     position:absolute;
-    left: 400px;
+    left: 700px;
     margin-left:1rem;
     white-space:nowrap;
     color:var(--white);
