@@ -217,6 +217,20 @@ opacity:0.8;
     font-style:italic;
     font-size:0.9rem;
 }
+@media (max-width: 600px) {
+  #textInput {
+    width: 90%;
+  }
+
+  #txtInputBtn {
+    margin-top: 1rem;
+    display: block;
+  }
+
+  header h1 {
+    font-size: 0.9rem;
+  }
+}
 /*footer section*/
 footer{
     text-align:center;
