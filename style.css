@@ -215,16 +215,6 @@ opacity:0.8;
     font-weight:bold;
     text-shadow:0 0 5px #800;
 }
-@media (max-width(600px){
-    #emotional-panel{
-        top:auto;
-        bottom:1rem;
-        right:1rem;
-        left:1rem;
-        font-size: 0.8rem;
-        max-width: unset;
-    }
-}
 #progress-area{
     margin-top:3rem;
     padding:1rem;
