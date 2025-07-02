@@ -145,20 +145,38 @@ opacity:0.8;
     color:#bbb;
     font-style:italic;
 }
+.title-wrap{
+    text-align:center;
+    margin-top:2rem;
+}
+.title-wrap h1, .title-wrap .glitch{
+    font-size: 1.0rem;
+    margin: 0.5rem 0;
+    font-weight: 300;
+    text-shadow: 0 0 10px #fff2;
+    overflow: hidden;
+    display: block;
+}
 /*gitch header effect*/
 .glitch{
-    color:var(--green);
+    color:transparent;
+    font-size: 1.0rem;
+    text-align: center;
+    margin-top: 2rem;
     position:relative;
 }
 /*overlay second copy of text*/
 .glitch::after{
     content:attr(data-text);/*takes text from attribute*/
     position:absolute;
-    left:2px;
-    text-shadow:-2px 0 red;
-    color:black;
+    left:0;
+    top:0;
+    width: 100%;
+    text-shadow:-1px 0 var(--green);
+    color:var(--red);
+    white-space: nowrap;
     clip:rect(0,900px,0,0);/*hides part of second copy for flickering effect*/
-    animation: glitchAnim 1.5s infinite linear alternate-reverse;
+    animation: glitchAnim 2s infinite linear alternate-reverse;
 }
 /*@keyframes controls how glicth moves over time*/
 @keyframes glitchAnim {
@@ -166,6 +184,14 @@ opacity:0.8;
   10% { clip: rect(10px, 9999px, 20px, 0); }
   20% { clip: rect(5px, 9999px, 15px, 0); }
   100% { clip: rect(0, 9999px, 0, 0); }
+}
+@media (max-width:600px){
+    .title-wrap h1,
+    .title-wrap .glitch{
+        font-size: 1rem;
+        text-align: center;
+        word-break: break-word;
+    }
 }
 #emotional-panel{
     position:fixed;
