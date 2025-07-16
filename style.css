@@ -22,7 +22,18 @@ header h1 {
   font-weight: 300;
   text-shadow: 0 0 10px #fff2;
 }
+/* Completely disable mobile tap highlight for interactive elements */
+.task-text, 
+#bonusList li {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
 
+.task-text:focus,
+#bonusList li:focus {
+  outline: none !important;
+  background-color: transparent !important;
+}
 /* Input area */
 #input-area {
   text-align: center;
@@ -229,16 +240,32 @@ li {
   text-shadow: none;
   cursor: default;
 }
-.task-text::before {
-  content: "⮞ ";
-  font-size: 0.8rem;
+.task-text {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+.task-arrow {
+  font-size: 0.85rem;
   color: var(--green);
   opacity: 0.6;
-  margin-left: 0.4rem;
   transition: opacity 0.3s ease;
 }
-.task-text:hover::before {
+.task-text:hover .task-arrow {
   opacity: 1;
+}
+.task-inner {
+  transition: color 0.3s ease, opacity 0.3s ease;
+}
+#taskList li.completed .task-inner {
+  text-decoration: line-through;
+  color: #777;
+  opacity: 0.6;
+}
+.clicked {
+  animation: flash 0.4s ease;
 }
 @keyframes flash {
   0% { background-color: #333; }
@@ -338,12 +365,6 @@ footer em {
 #task-suggestions {
   margin-left: 2rem auto;
   padding-left: 0;
-}
-.task-text.no-highlight {
-  pointer-events: none;
-}
-#bonusList li.no-highlight {
-  pointer-events: none;
 }
 #task-suggestions h2{
 padding-left:1.5rem;
