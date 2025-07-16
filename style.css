@@ -1,90 +1,90 @@
-/*reusable template-scalable css theme*/
-:root{
-    --bg:#0b0f0c;/*page background*/
-    --green:#6aff6a;
-    --red: #d00000;
-    --white: #eee;
-    --grey: #444;
+/*reusable template- scalable css theme*/
+:root {
+  --bg: #0b0f0c;
+  --green: #6aff6a;
+  --red: #d00000;
+  --white: #eee;
+  --grey: #444;
 }
-body{
-    background-color:var(--bg) ;
-    color:var(--white); 
-    font-family:"Courier New", monospace;
-    margin:0;/*space around element-outer space*/
-    padding:0 1rem;/*space within elementroot-em --1rem=16px*/
+
+body {
+  background-color: var(--bg);
+  color: var(--white);
+  font-family: "Courier New", monospace;
+  margin: 0;
+  padding: 0 1rem;
 }
-header h1{
-    text-align:center;
-    font-size:1rem;
-    margin-top:2rem;
-    font-weight:300;/*font weight is boldness of font-bold,light,normal*/
-    text-shadow:0 0 10px #fff2;
+
+header h1 {
+  text-align: center;
+  font-size: 1rem;
+  margin-top: 2rem;
+  font-weight: 300;
+  text-shadow: 0 0 10px #fff2;
 }
-/*input section*/
-#input-area{
-    text-align:center;
-    margin-top:2rem;
+
+/* Input area */
+#input-area {
+  text-align: center;
+  margin-top: 2rem;
 }
-#textInput{
-    padding:0.5rem;
-    width:60%;
-    max-width:400px;
-    background-color:#222;
-    border:1px solid var(--grey);
-    color:var(--white);
-    font-size: 1rem;
+#textInput {
+  padding: 0.5rem;
+  width: 60%;
+  max-width: 400px;
+  background-color: #222;
+  border: 1px solid var(--grey);
+  color: var(--white);
+  font-size: 1rem;
 }
-#txtInputBtn{
-    padding:0.5rem 1rem;
-    margin-left:0.5rem;
-    background-color:#333;
-    color:var(--white);
-    border:1px solid #555;
-    cursor:pointer;
-    transition:background-color 0.3s; /*slow animation*/
+#txtInputBtn {
+  padding: 0.5rem 1rem;
+  margin-left: 0.5rem;
+  background-color: #333;
+  color: var(--white);
+  border: 1px solid #555;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
-#txtInputBtn:hover{
-    background-color:#555;
+#txtInputBtn:hover {
+  background-color: #555;
 }
-/*task list section*/
-ul,ol{
-    margin-top:2rem;
-    padding-left:0;
-    line-height:1.8; /*space between lines*/
-    list-style:none;
+
+ul, ol {
+  margin-top: 2rem;
+  padding-left: 0;
+  line-height: 1.8;
+  list-style: none;
 }
-li{
-    position:relative;
-    padding-left:1rem;
-    color:#ccc;
+li {
+  position: relative;
+  padding-left: 1rem;
+  color: #ccc;
 }
+
+/* Removed bullets from existing tasks */
 #taskList li::before {
-  content:none;
+  content: none;
 }
-#bonus-tasks li::before{
-content:"x";
-color:var(--red);
-font-weight:bold;
-position:absolute;
-left:0;
-opacity:0.8;
+
+/* Dreadful Aspirations custom bullets */
+#bonus-tasks li::before {
+  content: "x";
+  color: var(--red);
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+  opacity: 0.8;
 }
-#bonusList li{
-    margin-bottom:0.5rem;
-    color:#bbb;
-    font-style:italic;
-    position:relative;
-    transition:all 0.2s ease;
-}/*
-#bonusList li:hover {
-  color: var(--green);
-  text-shadow: 0 0 2px var(--red);
-  filter:brightness(90%);
-  transform:scale(1.01) rotate(0.3deg);
+
+/* BONUS LIST HOVER — only if not completed */
+#bonusList li {
+  margin-bottom: 0.5rem;
+  color: #bbb;
+  font-style: italic;
+  position: relative;
   transition: all 0.2s ease;
-  background-color:#1a1a1a;
-  cursor:crosshair;
-}*/
+}
 #bonusList li:not(.completed):hover {
   color: var(--green);
   text-shadow: 0 0 2px var(--red);
@@ -93,125 +93,132 @@ opacity:0.8;
   transform: scale(1.01) rotate(0.3deg);
   cursor: crosshair;
 }
-/*applied only to <li> that don't have completed class*/
-#bonusList li:not(.completed):hover::after{
-    content:"Really?";
-    position:absolute;
-    left: 400px;
-    margin-left:1rem;
-    white-space:nowrap;
-    color:var(--white);
-    font-size:0.8rem;
-    opacity:0.8;
+#bonusList li:not(.completed):hover::after {
+  content: "Really?";
+  position: absolute;
+  left: 0;
+  bottom:-1.5rem;
+  pointer-events: none;
+  white-space: nowrap;
+  color: var(--white);
+  font-size: 0.75rem;
+  opacity: 0.6;
 }
-#bonusList li.completed{
-    text-decoration:line-through;
-    color:#666;
-    opacity:0.6;
-    cursor:pointer;
-    position:relative;
-    background-color:transparent;
-    text-shadow:none;
+/* Completed style */
+#bonusList li.completed {
+  text-decoration: line-through;
+  color: #666;
+  opacity: 0.6;
+  cursor: pointer;
+  position: relative;
+  background-color: transparent;
+  text-shadow: none;
 }
 #bonusList li.completed:hover::after{
     content:"undo the lie?";
     position: absolute;
-    left:30%;
-    margin-left: 1rem;
+    left:auto;
+    right:0;
+    bottom:-1.2rem;
     color: var(--white);
     font-size: 0.7rem;
     opacity: 0.6;
     white-space: nowrap;
+    pointer-events: none;
 }
-/*delete button style*/
-.delete-btn{
-    color:var(--red);
-    cursor:pointer;
-    font-weight:bold;
-    margin-left:1rem;
-    transition:transform 0.2s ease,color 0.2s ease;
-    font-family:monospace;
-    letter-spacing: 1px;
-    font-size:1.3rem;
+@media (max-width: 600px) {
+  #bonusList li.completed:hover::after {
+    bottom: -1.5rem;
+    font-size: 0.6rem;
+  }
 }
-.delete-btn:hover{
-    color:var(--green);
-    transform:scale(1.2) rotate(6deg);
-    text-shadow:0 0 6px var(--green);
+/* Deletion button */
+.delete-btn {
+  color: var(--red);
+  cursor: pointer;
+  font-weight: bold;
+  margin-left: 1rem;
+  transition: transform 0.2s ease, color 0.2s ease;
+  font-family: monospace;
+  letter-spacing: 1px;
+  font-size: 1.3rem;
 }
-/*deletion animation*/
-@keyframes fadeOut{
-    0%{
-        opacity:1;
-        filter:blur(0);
-    }
-    100%{
-        opacity:0;
-        filter:blur(2px);
-    }
+.delete-btn:hover {
+  color: var(--green);
+  transform: scale(1.2) rotate(6deg);
+  text-shadow: 0 0 6px var(--green);
 }
-/*bonus tasks section*/
-#bonus-tasks{
-    background-color:#1a1a1a;
-    padding:1rem;
-    margin-top:3rem;
-    border-left:4px solid #800000;
-    box-shadow:0 0 10px #222;
+@keyframes fadeOut {
+  0% { opacity: 1; filter: blur(0); }
+  100% { opacity: 0; filter: blur(2px); }
 }
-#bonus-tasks h2{
-    color:#cc4444;
-    font-family:"Courier New",monospace;
-    text-shadow:0 0 5px #000;
-}/*
-#bonus-tasks li{
-    margin-bottom:0.5rem;
-    color:#bbb;
-    font-style:italic;
-}*/
-.title-wrap{
-    text-align:center;
-    margin-top:2rem;
+
+/* Bonus tasks container */
+#bonus-tasks {
+  background-color: #1a1a1a;
+  padding: 1rem;
+  margin-top: 3rem;
+  border-left: 4px solid #800000;
+  box-shadow: 0 0 10px #222;
 }
-.title-wrap h1, .title-wrap .glitch{
-    font-size: 1.0rem;
-    margin: 0.5rem 0;
-    font-weight: 300;
-    text-shadow: 0 0 10px #fff2;
-    overflow: hidden;
-    display: block;
+#bonus-tasks h2 {
+  color: #cc4444;
+  font-family: "Courier New", monospace;
+  text-shadow: 0 0 5px #000;
 }
-/*gitch header effect*/
-.glitch{
-    color:transparent;
-    font-size: 1.0rem;
-    text-align: center;
-    margin-top: 2rem;
-    position:relative;
+
+.title-wrap {
+  text-align: center;
+  margin-top: 2rem;
 }
-/*overlay second copy of text*/
-.glitch::after{
-    content:attr(data-text);/*takes text from attribute*/
-    position:absolute;
-    left:0;
-    top:0;
-    width: 100%;
-    text-shadow:-1px 0 var(--green);
-    color:var(--red);
-    white-space: nowrap;
-    clip:rect(0,900px,0,0);/*hides part of second copy for flickering effect*/
-    animation: glitchAnim 2s infinite linear alternate-reverse;
+.title-wrap h1, .title-wrap .glitch {
+  font-size: 1rem;
+  margin: 0.5rem 0;
+  font-weight: 300;
+  text-shadow: 0 0 10px #fff2;
+  overflow: hidden;
+  display: block;
 }
-/*@keyframes controls how glicth moves over time*/
+/* Glitch effect */
+.glitch {
+  color: transparent;
+  font-size: 1rem;
+  text-align: center;
+  margin-top: 2rem;
+  position: relative;
+}
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  text-shadow: -1px 0 var(--green);
+  color: var(--red);
+  white-space: nowrap;
+  clip: rect(0, 900px, 0, 0);
+  animation: glitchAnim 2s infinite linear alternate-reverse;
+}
 @keyframes glitchAnim {
   0% { clip: rect(0, 9999px, 0, 0); }
   10% { clip: rect(10px, 9999px, 20px, 0); }
   20% { clip: rect(5px, 9999px, 15px, 0); }
   100% { clip: rect(0, 9999px, 0, 0); }
 }
+
 .task-text {
   cursor: pointer;
   display: inline-block;
-  transition: all 0.3s ease;
+ 
+  transition: text-decoration 0.3s ease, color 0.3s ease, opacity 0.3s ease;
+}
+.task-text,
+#bonusList li{
+    -webkit-tap-highlight-color: transparent;
+}
+.task-text:focus,
+#bonusList li:focus {
+  outline: none;
 }
 .task-text:hover {
   text-shadow: 0 0 4px var(--green);
@@ -224,7 +231,7 @@ opacity:0.8;
 }
 .task-text::before {
   content: "⮞ ";
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   color: var(--green);
   opacity: 0.6;
   margin-left: 0.4rem;
@@ -238,39 +245,35 @@ opacity:0.8;
   50% { background-color: #444; }
   100% { background-color: transparent; }
 }
-.task-text.clicked {
+.clicked {
   animation: flash 0.4s ease;
-}/*
-@media (max-width:600px){
-    .title-wrap h1,
-    .title-wrap .glitch{
-        font-size: 1rem;
-        text-align: center;
-        word-break: break-word;
-    }
-}*/
-#emotional-panel{
-    position:fixed;
-    left:1rem;
-    right:1rem;
-    background-color:#111;
-    border:1px solid var(--grey);
-    padding:1rem;
-    max-width:200px;
-    font-size:0.9rem;
-    color:var(--green);
-    border-radius:5px;
-    box-shadow:0 0 10px #000;
-    font-style:italic;
-    z-index:10;
 }
-#emotional-panel h3{
-    margin:0 0 0.5rem;
-    color:var(--red);
-    font-size:0.95rem;
-    font-weight:bold;
-    text-shadow:0 0 5px #800;
+
+/* Emotional panel */
+#emotional-panel {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  background-color: #111;
+  border: 1px solid var(--grey);
+  padding: 1rem;
+  max-width: 220px;
+  font-size: 0.9rem;
+  color: var(--green);
+  border-radius: 5px;
+  box-shadow: 0 0 10px #000;
+  font-style: italic;
+  z-index: 10;
 }
+
+#emotional-panel h3 {
+  margin: 0 0 0.5rem;
+  color: var(--red);
+  font-size: 0.95rem;
+  font-weight: bold;
+  text-shadow: 0 0 5px #800;
+}
+
 @media (max-width: 600px) {
   #emotional-panel {
     top: auto;
@@ -282,48 +285,48 @@ opacity:0.8;
     text-align: center;
   }
 }
-#progress-area{
-    margin-top:3rem;
-    padding:1rem;
-    background-color:#0f0f0f;
-    border-left:4x solid var(--green);
-    box-shadow: 0 0 10px #222;
-    text-align:center;
-}
-#progress-container{
-    width:100%;
-    height:20px;
-    background-color:#222;
-    margin-top:1rem;
-    position:relative;
-    border:1px solid var(--grey);
-}
-#progress-bar{
-    height:100%;
-    background:linear-gradient(to right, var(--green), var(--red));
-    width:0%;
-    transition:width 0.6s ease;
-}
-#progress-text{
-    margin-top:0.5rem;
-    color:#aaa;
-    font-style:italic;
-    font-size:0.9rem;
-}/*
-@media (max-width: 600px) {
-  #textInput {
-    width: 90%;
-  }
 
-  #txtInputBtn {
-    margin-top: 1rem;
-    display: block;
-  }
-
-  header h1 {
-    font-size: 0.9rem;
-  }
-}*/
+#progress-area {
+  margin-top: 3rem;
+  padding: 1rem;
+  background-color: #0f0f0f;
+  border-left: 4px solid var(--green);
+  box-shadow: 0 0 10px #222;
+  text-align: center;
+}
+#progress-container {
+  width: 100%;
+  height: 20px;
+  background-color: #222;
+  margin-top: 1rem;
+  position: relative;
+  border: 1px solid var(--grey);
+}
+#progress-bar {
+  height: 100%;
+  background: linear-gradient(to right, var(--green), var(--red));
+  width: 0%;
+  transition: width 0.6s ease;
+}
+#progress-text {
+  margin-top: 0.5rem;
+  color: #aaa;
+  font-style: italic;
+  font-size: 0.9rem;
+}
+footer {
+  text-align: center;
+  margin-top: 4rem;
+  padding: 2rem 1rem;
+  color: #777;
+  font-size: 0.9rem;
+  border-top: 1px solid #333;
+  font-style: italic;
+  background-color: var(--bg);
+}
+footer em {
+  color: #999;
+}
 /* style for completed existing tasks */
 #taskList li.completed .task-text {
   text-decoration: line-through;
@@ -332,54 +335,11 @@ opacity:0.8;
   transition: all 0.3s ease;
 }
 
-#taskList li.completed .task-text::after {
-  content: " ✓";
-  color: var(--green);
-  font-size: 0.9rem;
-  margin-left: 0.4rem;
-  opacity: 0.8;
-}
 #task-suggestions {
   margin-left: 2rem auto;
   padding-left: 0;
-  
- /* max-width: 500px;
-  text-align: left;*/
+
 }
 #task-suggestions h2{
 padding-left:1.5rem;
 }
-
-/*footer section*/
-footer{
-    text-align:center;
-    margin-top:4rem;
-    padding:2rem 1rem;
-    color:#777;
-    font-size:0.9rem;
-    border-top:1px solid #333;
-    font-style:italic;
-    background-color: var(--bg);
-}
-footer em{
-    color:#999;
-}
-/*task text changes*/
-/*
-.task-text {
-  cursor: pointer;
-  display: inline-block;
-  transition: all 0.3s ease;
-  text-decoration: underline dashed var(--green);
-}
-
-.task-text:hover {
-  color: var(--green);
-  text-shadow: 0 0 2px var(--red);
-}
-.completed{
-    text-decoration: line-through;
-    color:#777;
-    opacity:0.6;
-    transition:all 0.3s ease;
- }*/
