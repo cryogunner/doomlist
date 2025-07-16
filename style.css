@@ -271,19 +271,17 @@ footer{
 footer em{
     color:#999;
 }
-/*
-.whisper{
-    color:#555;
-    font-size:0.8rem;
-    font-style:italic;
-    opacity:0.6rem;
-    text-align:center;
-    margin-top:1rem;
+/*task text changes*/
+.task-text {
+  cursor: pointer;
+  display: inline-block;
+  transition: all 0.3s ease;
+  text-decoration: underline dashed var(--green);
 }
-    */
-.task-text{
-    cursor:pointer;
-    display:inline-block;
+
+.task-text:hover {
+  color: var(--green);
+  text-shadow: 0 0 2px var(--red);
 }
 .completed{
     text-decoration: line-through;
