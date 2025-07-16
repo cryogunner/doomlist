@@ -71,24 +71,41 @@ function updateProgress() {
 function createTaskElement(taskText) {
   const li = document.createElement("li");
 
+  // container span for whole task
   const textSpan = document.createElement("span");
-  textSpan.textContent = taskText;
   textSpan.classList.add("task-text");
 
+  // separate arrow span
+  const arrow = document.createElement("span");
+  arrow.classList.add("task-arrow");
+  arrow.textContent = "⮞";
+
+  // text that gets struck through
+  const innerText = document.createElement("span");
+  innerText.classList.add("task-inner");
+  innerText.textContent = taskText;
+
+  // delete button
   const delBtn = document.createElement("span");
   delBtn.textContent = "⌫";
   delBtn.classList.add("delete-btn");
 
+  // structure: textSpan (with arrow + innerText)
+  textSpan.appendChild(arrow);
+  textSpan.appendChild(innerText);
+
+  // click to toggle completion
   textSpan.addEventListener("click", () => {
     li.classList.toggle("completed");
     updateProgress();
-    
-    textSpan.classList.add("no-highlight"); //temporary flash
+
+    textSpan.classList.add("clicked");
     textSpan.blur();
-    setTimeout(()=>textSpan.classList.remove("no-highlight"),400);
-    
+
+    setTimeout(() => textSpan.classList.remove("clicked"), 400);
   });
 
+  // delete task
   delBtn.addEventListener("click", () => {
     li.style.animation = "fadeOut 0.5s forwards";
     setTimeout(() => {
@@ -97,11 +114,11 @@ function createTaskElement(taskText) {
     }, 500);
   });
 
+  // assemble list item
   li.appendChild(textSpan);
   li.appendChild(delBtn);
   return li;
 }
-
 // Glitch animation for h2
 const header = document.querySelector("h2");
 setInterval(() => {
@@ -184,9 +201,9 @@ document.querySelectorAll("#bonusList li").forEach(item => {
   item.addEventListener("click", () => {
     item.classList.toggle("completed");
     
-    item.classList.add("no-highlight");
+    item.classList.add("clicked");
     item.blur();
     
-    setTimeout(()=>item.classList.remove("no-highlight"),400);
+    setTimeout(()=>item.classList.remove("clicked"),400);
   });
 });
