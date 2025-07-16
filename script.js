@@ -81,9 +81,12 @@ function createTaskElement(taskText) {
 
   textSpan.addEventListener("click", () => {
     li.classList.toggle("completed");
-    textSpan.classList.add("no-highlight"); //temporary flash
-    setTimeout(()=>textSpan.classList.remove("no-highlight"),50);
     updateProgress();
+    
+    textSpan.classList.add("no-highlight"); //temporary flash
+    textSpan.blur();
+    setTimeout(()=>textSpan.classList.remove("no-highlight"),400);
+    
   });
 
   delBtn.addEventListener("click", () => {
@@ -180,7 +183,10 @@ setInterval(updateMood, 8000);
 document.querySelectorAll("#bonusList li").forEach(item => {
   item.addEventListener("click", () => {
     item.classList.toggle("completed");
+    
     item.classList.add("no-highlight");
-    setTimeout(()=>item.classList.remove("no-highlight"),50);
+    item.blur();
+    
+    setTimeout(()=>item.classList.remove("no-highlight"),400);
   });
 });
