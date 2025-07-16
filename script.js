@@ -13,18 +13,18 @@ return;//if no input return nothing
 const li=createTaskElement(taskText);//memory list item
 taskList.appendChild(li);//adds li to the actual list
 
-input.value="";//clear input box
-
-saveTask(); //save list function
+input.value="";
+saveTask(); 
 });
-loadTask();//load list function
+loadTask(); //initial load
+
 //function to save tasks
 function saveTask(){
     
     const tasks=[];//empty array to store task texts
 
-    document.querySelectorAll("#taskList li").forEach(li => {
-        tasks.push(li.firstChild.textContent.trim());
+    document.querySelectorAll("#taskList li .task-text").forEach(span => {
+        tasks.push(span.textContent.trim());
     });//go through each element to grab texts
     localStorage.setItem("myTasks",JSON.stringify(tasks));//convert array to string and store it
     updateProgress();
@@ -39,7 +39,7 @@ function loadTask(){
         const defaultTasks=[
             "Build a portfolio",
             "Learn a skill",
-            "Take care of myself"
+            "Take a bath"
         ];
         localStorage.setItem("myTasks",JSON.stringify(defaultTasks));//save it to localstorage
         saved=JSON.stringify(defaultTasks);//assign it to saved to use right after
@@ -64,7 +64,7 @@ function updateProgress(){
     progressBar.style.width=percent+"%";
 
     if(percent===0){
-        progressText.textContent="No progress yet. Just dread.";
+        progressText.textContent="no progress yet. just dread.";
     }else if(percent===100){
         progressText.textContent="you did it. are you okay?";
     }else{
@@ -82,7 +82,7 @@ textSpan.textContent=taskText;
 textSpan.classList.add("task-text");
 
 const delBtn=document.createElement("span");//delete button variable
-delBtn.textContent = "†";
+delBtn.textContent = "⌫";
 delBtn.classList.add("delete-btn");
 
 textSpan.addEventListener("click",()=>{ //strikethrough only on textspan
@@ -100,6 +100,7 @@ li.appendChild(textSpan);
 li.appendChild(delBtn);//add delete button
 return li;
 }
+//glitch animation
 const header=document.querySelector("h2");
 
 setInterval(()=>{ /*runs code every second*/
