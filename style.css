@@ -338,7 +338,12 @@ footer em {
 #task-suggestions {
   margin-left: 2rem auto;
   padding-left: 0;
-
+}
+.task-text.no-highlight {
+  pointer-events: none;
+}
+#bonusList li.no-highlight {
+  pointer-events: none;
 }
 #task-suggestions h2{
 padding-left:1.5rem;
